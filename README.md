@@ -1,3 +1,6 @@
+Migrate data from mysql to elastic search using keystore and truststore authentication 
+create keystore .jks file and import .crt and .key cetificate files.
+
 Steps
 1. Install logstash and jdbc driver to connect mysql
 2. Create config for db input and ES output 
