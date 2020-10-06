@@ -10,18 +10,24 @@ Steps
 
 Install Logstash 
 
-Mac:
+Mac os:
+
 brew update
+
 brew install logstash
 
-Or download src 
+Or download src
+
 https://artifacts.elastic.co/downloads/logstash/logstash-7.9.2.tar.gz
 
 Reference 
+
 https://www.elastic.co/downloads/logstash
 
 Test logstash
+
 logstash -e “input { stdin { } } output { stdout {} }”
 
 Get JDBC driver
+
 https://dev.mysql.com/downloads/connector/j/
