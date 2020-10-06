@@ -1,0 +1,32 @@
+input {
+  jdbc {
+    jdbc_driver_library => "~/Documents/workspace/elasticsearch/jdbc/mysql-connector-java-5.1.49.jar"
+    jdbc_driver_class => "com.mysql.jdbc.Driver"
+    jdbc_connection_string => "jdbc:mysql://<my_sql-db_url>/db"
+    jdbc_user => "dbuser"
+    jdbc_password => "mypwd$7R"
+    schedule => " * * * * * *"
+    statement => "SELECT * FROM db.employee where updatedat > :sql_last_value"
+    use_column_value => true
+    tracking_column => updatedat
+    tracking_column_type => "timestamp"
+  }
+}
+output {
+  elasticsearch {
+    document_id => "%{id}"
+    document_type => "message"
+    index => "index_test"
+    hosts => ["https://<elasctic_search_url>:9200"]
+    ssl => true
+    user => "esuser"
+    password => "espwd@123"
+    keystore => "~/Documents/workspace/elasticsearch/certs/keystore.jks"
+    keystore_password => "11223344"
+    truststore => "~/Documents/workspace/elasticsearch/certs/truststore.jks"
+    truststore_password => "11223344"
+    ilm_enabled => false
+  }
+
+}
+
